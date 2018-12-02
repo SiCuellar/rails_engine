@@ -1,4 +1,5 @@
 class Ap1::V1::CustomersController < ApplicationController
+
   def index
     render json: CustomerSerializer.new(Customer.all)
   end
