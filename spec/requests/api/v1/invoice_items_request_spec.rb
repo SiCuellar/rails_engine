@@ -8,6 +8,16 @@ describe "Invoice Item API" do
     invoice_items = JSON.parse(response.body)
 
     expect(response).to be_successful
-    expect(invoice_items.count).to eq(5)
+    expect(invoice_items["data"].count).to eq(5)
+  end
+
+  it "can get one invoice item request by its id " do
+    id = create(:invoice_item).id
+
+    get "/api/v1/invoice_items/#{id}"
+    invoice_item = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(invoice_items["data"]["id"]).to eq(id.to_s)
   end
 end
