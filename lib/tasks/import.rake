@@ -70,6 +70,4 @@ namespace :import do
       Transaction.create!(row.to_h)
     end
   end
-
-
 end
