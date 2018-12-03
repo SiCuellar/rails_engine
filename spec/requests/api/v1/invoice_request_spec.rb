@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Invoice API" do
   it "sends list of invoices" do
-    create_list(:invoices, 5)
+    create_list(:invoice, 5)
 
     get "/api/v1/invoices"
     invoices = JSON.parse(response.body)
