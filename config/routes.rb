@@ -40,7 +40,18 @@ Rails.application.routes.draw do
 
 #--------------------------------------------------------
       resources :customers, only: [:index, :show]
+      namespace :customers do
+        get '/find', to: 'customer_find#show'
+        get '/find_all', to: 'customer_find#index'
+        get '/random', to: 'customer_random#show'
 
+      end
+      scope module: 'customers' do
+        resources :customers do
+          get '/invoices', to: 'invoices#index'
+          get '/transactions', to: 'transactions#index'
+        end
+      end
 
 #--------------------------------------------------------
       resources :invoice_items, only: [:index, :show]
