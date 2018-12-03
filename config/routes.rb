@@ -69,11 +69,11 @@ Rails.application.routes.draw do
 
 #--------------------------------------------------------
       resources :invoices, only: [:index, :show]
-      # namespace :invoices do
-      #   get '/find', to: 'invoice_find#show'
-      #   get '/find_all', to: 'invoice_find#index'
-      #   get '/random', to: 'invoice_random#show'
-      # end
+      namespace :invoices do
+        get '/find', to: 'invoice_find#show'
+        get '/find_all', to: 'invoice_find#index'
+        get '/random', to: 'invoice_random#show'
+      end
       scope module: 'invoices' do
         resources :invoices do
           get '/transactions', to: 'transactions#index'
