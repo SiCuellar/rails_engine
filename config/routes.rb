@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   namespace :api do
     namespace :v1 do
 
@@ -7,6 +8,13 @@ Rails.application.routes.draw do
       #   get '/find_all', to: 'merchant_find#index'
       # end
       resources :merchants, only: [:index, :show]
+
+      scope module: 'merchants' do
+        resources :merchants do
+          get '/items', to: 'merchant_items#index'
+          # get '/invoices', to: 'merchant_invoices#index'
+        end
+      end
 
       namespace :items do
         # get '/find', to: 'item_find#show'
